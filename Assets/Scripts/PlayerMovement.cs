@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
 
-    [Header("Keybiinds")]
+    [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
 
     [Header("Ground Check")]
@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        readyToJump = true;
     }
 
     
@@ -51,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+
+        
     }
 
     private void FixedUpdate()
@@ -73,6 +78,8 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
+
+
 
     private void MovePlayer()
     {
