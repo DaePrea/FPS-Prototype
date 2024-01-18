@@ -16,6 +16,15 @@ public class TurretAI : MonoBehaviour
 
     bool isAggro = false;
 
+
+    public float timeBetweenAttacks;
+    bool alreadyAttacked;
+    public GameObject projectile;
+    public float health;
+    public float sightRange, attackSight;
+    public bool playerInSightRange, playerInAttackRange;
+    public LayerMask player;
+
     void Start()
     {
         anim = GetComponent<Animator>();  
@@ -35,7 +44,13 @@ public class TurretAI : MonoBehaviour
         {
             isAggro = true;
         }
+
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, player);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackSight, player);
+        if (playerInAttackRange && playerInSightRange) EngageTarget();
     }
+
+
 
     private void EngageTarget()
     {
@@ -45,6 +60,27 @@ public class TurretAI : MonoBehaviour
         {
             anim.SetTrigger("isAiming");   
         }
+
+        if (!alreadyAttacked)
+        {
+            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            Vector3 directionToShoot = (playerTarget.position - transform.position).normalized;
+            rb.AddForce(directionToShoot * 96f, ForceMode.Impulse);
+
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+        
+    }
+
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
+
+    private void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
