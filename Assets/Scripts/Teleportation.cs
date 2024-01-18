@@ -6,7 +6,6 @@ public class Teleportation : MonoBehaviour
 {
     public GameObject Player;
     public GameObject TeleportThere;
-    
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -14,6 +13,5 @@ public class Teleportation : MonoBehaviour
         {
             Player.transform.position = TeleportThere.transform.position;
         }
-        
     }
 }

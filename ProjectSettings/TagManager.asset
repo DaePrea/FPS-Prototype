@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Teleporter
   - Death
-  - Teleporter 2
+  - Appear
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - 
   - Floor
-  - 
+  - Player
   - 
   - 
   - 

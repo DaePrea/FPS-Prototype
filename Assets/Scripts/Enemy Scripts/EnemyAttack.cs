@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    [SerializeField] PlayerHealth playerTarget;
     [SerializeField] float damage = 20f;
 
 
-    private void OnCollisionEnter(Collision collision)
+    public void Attack()
     {
-        if (collision.gameObject.tag == "player")
-        {
-
-            Destroy(gameObject);
-        }
-
+        playerTarget.TakeDamage(damage);
     }
 }

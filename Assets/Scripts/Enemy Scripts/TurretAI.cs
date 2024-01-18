@@ -10,6 +10,7 @@ public class TurretAI : MonoBehaviour
     [SerializeField] float attackRange = 5f;
     float distanceToTarget;
     float turnSpeed = 3f;
+    [SerializeField] float damage = 2f;
 
     [SerializeField] Transform playerTarget;
     Animator anim;
@@ -76,11 +77,6 @@ public class TurretAI : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
-    }
-
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
