@@ -10,7 +10,7 @@ public class PlayerDeath : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Death"))
         {
-            Destroy(gameObject);
+            GetComponent<DeathHandle>().DeathHandled();
         }
         
     }

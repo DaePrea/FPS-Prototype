@@ -11,5 +11,6 @@ public class RiflePickup : MonoBehaviour
             print("picked up rifle");
             Destroy(gameObject);
         }
+
     }
 }
