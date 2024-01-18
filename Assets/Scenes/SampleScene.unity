@@ -7789,11 +7789,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Walker
       objectReference: {fileID: 0}
-    - target: {fileID: 4060089117048371764, guid: 3e6b507bfd82a3f41bf65f71c8e3abf5,
-        type: 3}
-      propertyPath: playerTarget
-      value: 
-      objectReference: {fileID: 494118385}
     - target: {fileID: 5830899960090071086, guid: 3e6b507bfd82a3f41bf65f71c8e3abf5,
         type: 3}
       propertyPath: m_LocalPosition.x
