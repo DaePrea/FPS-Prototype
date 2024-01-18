@@ -35,10 +35,17 @@ public class Weapon : MonoBehaviour
 
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, raycastRange))
         {
-            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+            WalkerHealth target = hit.transform.GetComponent<WalkerHealth>();
             target.TakeDamage(damage);
         }
-        
+
+        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, raycastRange))
+        {
+            TurretHealth target = hit.transform.GetComponent<TurretHealth>();
+            target.TakeDamage(damage);
+        }
+    
+
         else { return; }
     }
 }
