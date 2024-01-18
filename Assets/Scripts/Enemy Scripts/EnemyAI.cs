@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] float chaseRange = 5f;
-    float distanceToTarget;
+    float distanceToTarget = Mathf.Infinity;
     float turnSpeed = 5f;
     
     [SerializeField] Transform playerTarget;
@@ -18,7 +18,8 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        nMA = GetComponent<NavMeshAgent>();   
+        nMA = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class EnemyAI : MonoBehaviour
             EngageTarget();
         }
 
-        else if(distanceToTarget <= chaseRange)
+        else if (distanceToTarget <= chaseRange)
         {
             isAggro = true;
         }
@@ -42,16 +43,31 @@ public class EnemyAI : MonoBehaviour
     {
         FaceTarget();
 
-        if(distanceToTarget >= nMA.stoppingDistance)
+        if (distanceToTarget >= nMA.stoppingDistance)
         {
             anim.SetTrigger("isMoving");
+            anim.SetBool("isAttacking", false);
             nMA.SetDestination(playerTarget.position);
         }
 
-        if(distanceToTarget <= nMA.stoppingDistance)
+        if (distanceToTarget <= nMA.stoppingDistance)
         {
-            anim.SetBool("isAttacking", false);
+            anim.SetBool("isAttacking", true);
         }
+    }
+
+    private void AtackPlayer()
+    {
+        GetComponent<Animator>().SetBool("isAttacking", true);
+        print("attacking poorly");
+    }
+
+    private void ChasePlayer()
+    {
+        GetComponent<Animator>().SetBool("isMoving", true);
+        GetComponent<Animator>().SetBool("isAttacking", false);
+        nMA.SetDestination(playerTarget.transform.position);
+
     }
 
     private void OnDrawGizmosSelected()

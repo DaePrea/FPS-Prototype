@@ -11,7 +11,7 @@ public class TurretHealth : MonoBehaviour
         hP -= damage;
         print(hP);
 
-        if (hP <= 0)
+        if(hP<=0)
         {
             Destroy(gameObject);
         }
