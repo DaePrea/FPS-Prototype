@@ -6,7 +6,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] float raycastRange = 100f;
-    
+    [SerializeField] float damage = 2f;
+
     [SerializeField] Camera playerCam;
 
     void Start()
@@ -25,8 +26,19 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
+        ProcessRaycast();
+    }
+
+    private void ProcessRaycast()
+    {
         RaycastHit hit;
-        Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, raycastRange);
-        print(hit.transform.name);
+
+        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, raycastRange))
+        {
+            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+            target.TakeDamage(damage);
+        }
+        
+        else { return; }
     }
 }

@@ -4,61 +4,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class TurretAI : MonoBehaviour
 {
-    [SerializeField] float chaseRange = 5f;
+
+    [SerializeField] float attackRange = 5f;
     float distanceToTarget;
-    float turnSpeed = 5f;
-    
+    float turnSpeed = 3f;
+
     [SerializeField] Transform playerTarget;
-    NavMeshAgent nMA;
+    Animator anim;
 
     bool isAggro = false;
 
     void Start()
     {
-        nMA = GetComponent<NavMeshAgent>();   
+        anim = GetComponent<Animator>();  
     }
 
     // Update is called once per frame
     void Update()
     {
+        distanceToTarget = Vector3.Distance(playerTarget.position, transform.position);
 
-        if(isAggro)
+        if (isAggro)
         {
             EngageTarget();
         }
 
-        else if(distanceToTarget <= chaseRange)
+        else if (distanceToTarget <= attackRange)
         {
             isAggro = true;
-        }
-
-
-        distanceToTarget = Vector3.Distance(playerTarget.position, transform.position);
-
-        if (distanceToTarget <= chaseRange)
-        {
-            nMA.SetDestination(playerTarget.position);
         }
     }
 
     private void EngageTarget()
     {
-        if(distanceToTarget >= nMA.stoppingDistance)
-        {
-            nMA.SetDestination(playerTarget.position);
-        }
+        FaceTarget();
 
-        if(distanceToTarget <= nMA.stoppingDistance)
+        if(distanceToTarget >= 5f)
         {
-            print("attacking");
+            anim.SetTrigger("isAiming");   
         }
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, chaseRange);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     void FaceTarget()
