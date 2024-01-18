@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 5409158255688372076}
   - component: {fileID: 2635217180850635277}
   - component: {fileID: 2310803575723194087}
-  - component: {fileID: 550090489}
+  - component: {fileID: 8157926176536273254}
   m_Layer: 0
   m_Name: Turret shaft
   m_TagString: Untagged
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 30
   playerTarget: {fileID: 0}
---- !u!114 &550090489
+--- !u!114 &8157926176536273254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -328,10 +328,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5409158255688372077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff899a66c32fbd94380e10ce291712fb, type: 3}
+  m_Script: {fileID: 11500000, guid: f00ef0a1d91612f459b514cfd2a12526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hP: 4
+  hP: 6
 --- !u!1 &5409158255850458842
 GameObject:
   m_ObjectHideFlags: 0
