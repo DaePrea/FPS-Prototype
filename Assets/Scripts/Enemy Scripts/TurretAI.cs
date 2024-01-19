@@ -10,7 +10,7 @@ public class TurretAI : MonoBehaviour
     [SerializeField] float attackRange = 5f;
     float distanceToTarget;
     float turnSpeed = 3f;
-    [SerializeField] float damage = 2f;
+    public float damage = 2f;
 
     [SerializeField] Transform playerTarget;
     Animator anim;
@@ -51,8 +51,6 @@ public class TurretAI : MonoBehaviour
         if (playerInAttackRange && playerInSightRange) EngageTarget();
     }
 
-
-
     private void EngageTarget()
     {
         FaceTarget();
@@ -66,13 +64,23 @@ public class TurretAI : MonoBehaviour
         {
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             Vector3 directionToShoot = (playerTarget.position - transform.position).normalized;
-            rb.AddForce(directionToShoot * 96f, ForceMode.Impulse);
+            rb.AddForce(directionToShoot * 50f, ForceMode.Impulse);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
-        
+
     }
+
+    //private void OnTriggerEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        PlayerHealth target = transform.GetComponent<PlayerHealth>();
+    //        target.TakeDamage(damage);
+    //    }
+
+    //}
 
     private void ResetAttack()
     {

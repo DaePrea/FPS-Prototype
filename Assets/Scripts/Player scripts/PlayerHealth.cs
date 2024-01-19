@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
 
     [SerializeField] float hP = 100f;
-
+    float damage = 3f;
 
     public void TakeDamage(float damage)
     {
@@ -17,4 +17,16 @@ public class PlayerHealth : MonoBehaviour
             GetComponent<DeathHandle>().DeathHandled();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        if(other.tag == "Bullet")
+        {
+            TakeDamage(damage);
+            Destroy(other.gameObject);
+        }
+    }
+
+
 }
