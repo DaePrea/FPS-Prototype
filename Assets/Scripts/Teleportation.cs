@@ -9,6 +9,7 @@ public class Teleportation : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        //brings the player to a set location
         if (collision.gameObject.CompareTag("Teleporter"))
         {
             Player.transform.position = TeleportThere.transform.position;

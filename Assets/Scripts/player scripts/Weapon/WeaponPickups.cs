@@ -17,14 +17,9 @@ public class WeaponPickups : MonoBehaviour
         col = GetComponent<BoxCollider>();   
     }
 
-    
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
+        //makes the object a child of the weapon switcher object
         gameObject.transform.parent = Weapons.transform;
         weaponSwitcher.enabled = true;
         PositionTransfer();
@@ -32,6 +27,7 @@ public class WeaponPickups : MonoBehaviour
 
     private void PositionTransfer()
     {
+        //changes the position of the object so it is on the player
         gameObject.transform.position = newPos.transform.position;
         gameObject.transform.rotation = newPos.transform.rotation;
         col.enabled = false;

@@ -9,6 +9,7 @@ public class CameraMove : MonoBehaviour
 
     void Update()
     {
+        //mves the camera
         transform.position = cameraPosition.position;    
     }
 }

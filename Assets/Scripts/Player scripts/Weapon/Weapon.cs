@@ -36,6 +36,7 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator Shoot()
     {
+        //gives weapon a cooldown
         canShoot = false;
  
             ProcessRayCast();
@@ -47,6 +48,7 @@ public class Weapon : MonoBehaviour
 
     private void PlayMuzzleFlash()
     {
+        //plays the muzzle flash
         muzzleFlash.Play();  
     }
 
@@ -54,6 +56,7 @@ public class Weapon : MonoBehaviour
     {
         RaycastHit thingWeHit;
 
+        //deals damage to enemies
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out thingWeHit, range))
         {
             EnemyHealth target = thingWeHit.transform.GetComponent<EnemyHealth>();
@@ -69,6 +72,7 @@ public class Weapon : MonoBehaviour
 
     private void CreateHitVFX(RaycastHit thingWeHit)
     {
+        //tells you where you hit
         GameObject impact = Instantiate(hitVFX, thingWeHit.point, Quaternion.identity);
         Destroy(impact, 0.1f);
     }

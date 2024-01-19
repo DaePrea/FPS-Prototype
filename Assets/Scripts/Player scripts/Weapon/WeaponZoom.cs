@@ -20,9 +20,10 @@ public class WeaponZoom : MonoBehaviour
         playerCam.fieldOfView = zoomOut;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        //toggles camera zoom for the weapon
         if(Input.GetMouseButtonDown(1))
         {
             if(!zoomToggle)

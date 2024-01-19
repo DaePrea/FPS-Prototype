@@ -45,7 +45,7 @@ public class TurretAI : MonoBehaviour
         {
             isAggro = true;
         }
-
+        
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, player);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackSight, player);
         if (playerInAttackRange && playerInSightRange) EngageTarget();
@@ -72,16 +72,6 @@ public class TurretAI : MonoBehaviour
 
     }
 
-    //private void OnTriggerEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        PlayerHealth target = transform.GetComponent<PlayerHealth>();
-    //        target.TakeDamage(damage);
-    //    }
-
-    //}
-
     private void ResetAttack()
     {
         alreadyAttacked = false;
@@ -94,6 +84,7 @@ public class TurretAI : MonoBehaviour
 
     void FaceTarget()
     {
+        //makes the turret face the player
         Vector3 direction = (playerTarget.position - transform.position).normalized;
         Quaternion angleToTurn = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, angleToTurn, Time.deltaTime * turnSpeed);

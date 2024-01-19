@@ -9821,6 +9821,12 @@ PrefabInstance:
       propertyPath: damage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3319668260014049440, guid: 9fdd00dc01082e140b78de668d5339cb,
+        type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 19800000, guid: 8eaaa4f553116f44b8459bc24201c514,
+        type: 3}
     - target: {fileID: 3319668260014049447, guid: 9fdd00dc01082e140b78de668d5339cb,
         type: 3}
       propertyPath: m_Name
@@ -10050,6 +10056,12 @@ PrefabInstance:
       propertyPath: damage
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6252453952813985900, guid: d28ff85ba11fc3d41990148cdac5aab2,
+        type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 19800000, guid: 8eaaa4f553116f44b8459bc24201c514,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d28ff85ba11fc3d41990148cdac5aab2, type: 3}
 --- !u!1001 &7532836009701193368

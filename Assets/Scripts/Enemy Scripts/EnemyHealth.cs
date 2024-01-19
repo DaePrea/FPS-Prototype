@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
         hP -= damage;
         print(hP);
 
+        //if health is less than or equals to 0 destroy object
         if(hP<=0)
         {
             Destroy(gameObject);

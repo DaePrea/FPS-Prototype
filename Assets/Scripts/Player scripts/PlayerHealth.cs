@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        //if player gets killed by enemies the game over screen will appear
         hP -= damage;
         print("being hurt");
         if (hP <= 0)
@@ -20,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        //collisions for the bullets hitting the player
         if(other.tag == "Bullet")
         {
             TakeDamage(damage);

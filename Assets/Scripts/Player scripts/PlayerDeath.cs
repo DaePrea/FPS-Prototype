@@ -8,6 +8,7 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        //determines if the player has collided with the death barrier
         if (collision.gameObject.CompareTag("Death"))
         {
             GetComponent<DeathHandle>().DeathHandled();

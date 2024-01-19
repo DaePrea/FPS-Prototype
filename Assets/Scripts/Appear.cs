@@ -10,6 +10,7 @@ public class Appear : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        //brings the player to a set location
         if (collision.gameObject.CompareTag("Appear"))
         {
             Player.transform.position = AppearHere.transform.position;

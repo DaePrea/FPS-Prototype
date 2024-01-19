@@ -15,6 +15,7 @@ public class DeathHandle : MonoBehaviour
 
     public void DeathHandled()
     {
+        //enables the game over screen when the player dies
         GameOverCanvas.enabled = true;
         Cursor.visible = true;
         FindObjectOfType<WeaponSwitcher>().enabled = false;

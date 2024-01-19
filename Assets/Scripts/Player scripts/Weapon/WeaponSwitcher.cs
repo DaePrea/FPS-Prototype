@@ -7,13 +7,7 @@ public class WeaponSwitcher : MonoBehaviour
 {
     [SerializeField] int currentWeapon = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+   
     void Update()
     {
         SetWeaponActive();
@@ -23,6 +17,7 @@ public class WeaponSwitcher : MonoBehaviour
 
     private void ProcessScrollWheelInput()
     {
+        //switches between the child objects of the object the script is put onto
         if(Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             //currentWeapon++;

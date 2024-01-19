@@ -77,6 +77,7 @@ public class EnemyAI : MonoBehaviour
 
     void FaceTarget()
     {
+        //makes the turret face the player
         Vector3 direction = (playerTarget.position - transform.position).normalized;
         Quaternion angleToTurn = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, angleToTurn, Time.deltaTime * turnSpeed);
